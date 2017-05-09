@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author Faiqoh
  */
 public class c_koneksi {
-     public static ResultSet executeQuery(String SQL) {       
+    public static ResultSet executeQuery(String SQL) {       
          ResultSet rs = null;     
      Connection koneksi = setKoneksi();          
     try {              

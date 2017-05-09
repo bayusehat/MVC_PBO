@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.login_koneksi;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,26 +44,25 @@ public class login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tuser = new javax.swing.JTextField();
         tpass = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
-        btnin = new javax.swing.JButton();
         btnup = new javax.swing.JButton();
+        btnin = new javax.swing.JButton();
         btnexit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Password");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 70, 70, 20);
+        jLabel1.setBounds(10, 90, 70, 20);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Username");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(90, 10, 70, 20);
+        jLabel2.setBounds(10, 30, 70, 20);
 
         tuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,26 +70,11 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tuser);
-        tuser.setBounds(40, 30, 160, 30);
+        tuser.setBounds(80, 30, 210, 30);
 
         tpass.setText("jPasswordField1");
         jPanel1.add(tpass);
-        tpass.setBounds(40, 90, 160, 30);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(80, 20, 240, 130);
-
-        jPanel2.setBackground(new java.awt.Color(255, 102, 255));
-        jPanel2.setLayout(null);
-
-        btnin.setText("Sign In");
-        btnin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btninActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnin);
-        btnin.setBounds(20, 10, 160, 30);
+        tpass.setBounds(80, 90, 210, 30);
 
         btnup.setText("Sign Up");
         btnup.addActionListener(new java.awt.event.ActionListener() {
@@ -97,17 +82,32 @@ public class login extends javax.swing.JFrame {
                 btnupActionPerformed(evt);
             }
         });
-        jPanel2.add(btnup);
-        btnup.setBounds(10, 60, 80, 30);
+        jPanel1.add(btnup);
+        btnup.setBounds(80, 140, 100, 30);
 
+        btnin.setText("Sign In");
+        btnin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btninActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnin);
+        btnin.setBounds(190, 140, 100, 30);
+
+        btnexit.setBackground(new java.awt.Color(255, 0, 0));
         btnexit.setText("Exit");
-        jPanel2.add(btnexit);
-        btnexit.setBounds(120, 60, 70, 30);
+        btnexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnexit);
+        btnexit.setBounds(160, 190, 50, 40);
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(100, 180, 200, 100);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 360, 300);
 
-        setBounds(0, 0, 416, 339);
+        setBounds(0, 0, 365, 309);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuserActionPerformed
@@ -142,18 +142,23 @@ public class login extends javax.swing.JFrame {
     private void btnupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupActionPerformed
         // TODO add your handling code here:
         
-        /*String username= tuser.getText();
+        String username = tuser.getText();
         String password = tpass.getText();
         
-        try{
-            try(Statement statement = (Statement) file_koneksi.GetConnection().createStatement()){
-                statement.executeUpdate("insert into tb_akun(username,password) VALUES('"+username+"','"+password+"');");
+        try {
+            try (Statement statement = (Statement) login_koneksi.GetConnection().createStatement()){
+                statement.executeUpdate("INSERT INTO tb_akun(username,password) VALUES ('"+username+"','"+password+"');");
             }
-            JOptionPane.showMessageDialog(null,"Selamat! anda Berhasil sign Up");
+            JOptionPane.showMessageDialog(null, "Selamat! anda berhasil Sign Up");
         }catch(Exception t){
-            JOptionPane.showMessageDialog(null,"Mohon Maaf, ulangi lagi prosedur");
-        }*/
+            JOptionPane.showMessageDialog(null,"Mohon maaf, ulangi lagi prosedur");
+        }
     }//GEN-LAST:event_btnupActionPerformed
+
+    private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnexitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +202,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField tpass;
     private javax.swing.JTextField tuser;
     // End of variables declaration//GEN-END:variables
